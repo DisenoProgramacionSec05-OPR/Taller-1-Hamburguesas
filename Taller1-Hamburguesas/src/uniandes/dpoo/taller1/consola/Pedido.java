@@ -82,7 +82,6 @@ public class Pedido
 		{
 			Producto item = iter_items.next();
 			String linea = item.generarTextoFactura();
-			Factura += "\n" + linea;
 		}
 		
 		Factura += "Neto: " + Integer.toString(precioNeto);
