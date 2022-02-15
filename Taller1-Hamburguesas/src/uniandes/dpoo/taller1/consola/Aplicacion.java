@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import uniandes.dpoo.taller1.procesamiento.LoadMenu;
 import uniandes.dpoo.taller1.modelo.Restaurante;
 import uniandes.dpoo.taller1.modelo.*; 
 import uniandes.dpoo.taller1.procesamiento.*;
@@ -57,16 +56,17 @@ public class Aplicacion
 	public void mostrarMenuApp()
 	{
 		System.out.println("\nOpciones de la aplicación\n");
-		System.out.println("1. Cargar y ver Menu");
-		System.out.println("2. Iniciar nuevo pedido");
-		System.out.println("3. Agregar elemento a pedido");
-		System.out.println("4. Cerrar pedido y guardar factura");
-		System.out.println("5. Consultar la informacion de un pedido dado la ID");
-		System.out.println("6. Salir de la aplicación");
+		System.out.println("1. Cargar y ver Menu.");
+		System.out.println("2. Iniciar nuevo pedido.");
+		System.out.println("3. Agregar elemento a pedido.");
+		System.out.println("4. Cerrar pedido y guardar factura.");
+		System.out.println("5. Consultar la informacion de un pedido dado la ID.");
+		System.out.println("6. Salir de la aplicación.");
 	}
 
 	public void cargarMenu()
 	{
+		System.out.println("\n" + "Se esta cargando la informacion del menu.");
 		
 	}
 	public void iniciarPedido()
