@@ -1,4 +1,4 @@
-package uniandes.dpoo.taller1.consola;
+package uniandes.dpoo.taller1.modelo;
 
 
 import java.io.File;
