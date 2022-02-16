@@ -1,8 +1,12 @@
 package uniandes.dpoo.taller1.consola;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Iterator;
-import java.util.ArrayList;
+import java.util.LinkedList;
+
 
 public class Pedido
 {
@@ -10,7 +14,7 @@ public class Pedido
 	private int idPedido;
 	private String nombreCliente;
 	private String direccionCliente;
-	private ArrayList<Producto> itemsPedido;
+	private LinkedList<Producto> itemsPedido;
 	
 	public Pedido(String nombreCliente, String direccionCliente)
 	{
@@ -18,13 +22,28 @@ public class Pedido
 		this.direccionCliente = direccionCliente;
 		numeroPedidos ++;
 		idPedido = numeroPedidos;
-		itemsPedido = new ArrayList<Producto>();
+		itemsPedido = new LinkedList<Producto>();
 	}
 	
 	
 	public int getIdPedido()
 	{
 		return idPedido;
+	}
+	
+	public String getNombreCliente() 
+	{
+		return nombreCliente;	
+	}
+	
+	public String getDireccionCliente()
+	{
+		return direccionCliente;
+	}
+	
+	public LinkedList<Producto> getItemsPedido()
+	{
+		return itemsPedido;
 	}
 	
 	
@@ -34,7 +53,7 @@ public class Pedido
 	}
 	
 	
-	private int getPrecioNetoPedido()
+	private int getPrecioTotalPedido()
 	{
 		int precio = 0;
 		Iterator<Producto> iter_items = itemsPedido.iterator();
@@ -49,44 +68,47 @@ public class Pedido
 	}
 	
 	
-	private int getPrecioIVAPedido(int precioneto)
+	private int getPrecioNetoPedido(int precioT)
 	{
 
-		float IVA = precioneto*0.19F;
+		float precioN = precioT/1.19F;
 		
-		return IVA;
+		return Math.round(precioN);
 	}
 	
 	
-	private int getPrecioTotalPedido(int precioneto, int precioIVA)
+	private int getPrecioIVAPedido(int precioN)
 	{
 
-		return precioneto + precioIVA;
+		float IVA = precioN*0.19F;
+		
+		return Math.round(IVA);
 	}
 	
 	
-	private String TextoFactura()
-	{	
-		int precioNeto = getPrecioNetoPedido();
-		int precioIVA = getPrecioIVAPedido(precioNeto);
-		int precio_total = getPrecioTotalPedido(precioNeto, precioIVA);
+	private String generarTextoFactura()
+	{
+		int precioT = getPrecioTotalPedido();
+		int pNeto = getPrecioNetoPedido(precioT);
+		int pIVA = getPrecioIVAPedido(pNeto);
 		
-		String Factura ="Cliente: " + nombreCliente;
-		Factura += "Direccion: " + direccionCliente;
-		Factura += "Número del Pedido: " + Integer.toString(idPedido);
-		Factura += "Pedido";
+		String factura = "Cliente: " + nombreCliente;
+		factura += "Dirección: " + direccionCliente;
+		factura += "Número pedido: " + Integer.toString(idPedido);
+		factura += "Productos";
 		
 		Iterator<Producto> iter_items = itemsPedido.iterator();
 		
 		while (iter_items.hasNext())
 		{
 			Producto item = iter_items.next();
-			String linea = item.generarTextoFactura();
+			String texto = item.generarTextoFactura();
+			factura += texto;
 		}
 		
-		Factura += "Neto: " + Integer.toString(precioNeto);
-		Factura += "IVA: " + Integer.toString(precioiIVA);
-		Factura += "Total: " + Integer.toString(precio_total);	
+		factura += "Precio neto: " + Integer.toString(pNeto);
+		factura += "IVA: " + Integer.toString(pIVA);
+		factura += "Precio total: " + Integer.toString(precioT);	
 		
 		
 		return factura;
@@ -96,6 +118,17 @@ public class Pedido
 	public void guardarFactura(File archivo)
 	{
 		String factura = generarTextoFactura();
+		FileWriter fw;
+		try {
+			fw = new FileWriter(archivo);
+			BufferedWriter bw = new BufferedWriter(fw);
+			 bw.write(factura);
+	         bw.close();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
 	}
 	
 }
