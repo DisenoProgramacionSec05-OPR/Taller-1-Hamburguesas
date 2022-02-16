@@ -32,7 +32,7 @@ public class Aplicacion
 			{
 				mostrarOpciones();
 				
-				int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opcion"));
+				int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción"));
 				
 				if (opcion_seleccionada == 1)
 					iniciarPedido();
@@ -46,7 +46,7 @@ public class Aplicacion
 					consultarInformacion();
 				else if (opcion_seleccionada == 6)
 				{
-					System.out.println("Saliendo de la aplicacion ...");
+					System.out.println("Saliendo de la aplicación ...");
 					inicio = false;
 				}
 				else
@@ -70,7 +70,7 @@ public class Aplicacion
 		System.out.println("2. Mostrar el menu del restaurante");
 		System.out.println("3. Agregar un producto al pedido");
 		System.out.println("4. Cerrar el pedido y guardar la factura");
-		System.out.println("5. Consultar la informacion de un pedido antiguo dado su id");
+		System.out.println("5. Consultar la informacion de un pedido según su ID");
 		System.out.println("6. Salir de la aplicacion");
 	}
 	
