@@ -1,38 +1,58 @@
 package uniandes.dpoo.taller1.consola;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+
 
 public class Combo implements Producto
 {
 	private String nombreCombo;
 	private double descuento;
-	private ArrayList<ProductoMenu> itemsCombo;
-	private ProductoMenu precioBase;
+	private LinkedList<ProductoMenu> itemsCombo;
 	
-	public Combo(String pNombre, double descuento)
+	public Combo(String nombre, double descuento)
 	{
-		nombreCombo=pNombre;
-		this.descuento=descuento;
-		itemsCombo= new ArrayList<ProductoMenu>();
+		this.nombreCombo = nombre;
+		this.descuento = descuento;
+		itemsCombo = new LinkedList<ProductoMenu>();
 	}
 	
-	public void agregarItemACombo(Producto itemCombo)
+	
+	public void agregarItemACombo(ProductoMenu itemCombo)
 	{
-		itemsCombo.add((ProductoMenu) itemCombo);
+		itemsCombo.add(itemCombo);
 	}
 	
-	public int getPrecio() 
-	{
-		return precioBase.getPrecio();
-	}
 	
-	public String getNombre() 
+	public String getNombre()
 	{
 		return nombreCombo;
 	}
 
-	public String generarTextoFactura() 
+	
+	public int getPrecio()
+	{		
+		int precio = 0;
+		Iterator<ProductoMenu> iter_items = itemsCombo.iterator();
+		
+		while (iter_items.hasNext())
+		{
+			Producto item = iter_items.next();
+			precio += item.getPrecio();
+		}
+		
+		double con_descuento = precio - (precio*descuento);
+		float precio_final = (float) con_descuento;
+		
+		return Math.round(precio_final);
+	}	
+	
+	
+	public String generarTextoFactura()
 	{
-		return itemsCombo+" : "+precioBase.getPrecio()+descuento;
+		String precio = Integer.toString(getPrecio());
+		String texto = nombreCombo + "  " + precio;
+		
+		return texto;
 	}
 }
