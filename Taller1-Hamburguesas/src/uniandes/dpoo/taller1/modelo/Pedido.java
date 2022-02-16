@@ -1,4 +1,4 @@
-package uniandes.dpoo.taller1.consola;
+package uniandes.dpoo.taller1.modelo;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -93,8 +93,8 @@ public class Pedido
 		int pIVA = getPrecioIVAPedido(pNeto);
 		
 		String factura = "Cliente: " + nombreCliente;
-		factura += "Dirección: " + direccionCliente;
-		factura += "Número pedido: " + Integer.toString(idPedido);
+		factura += "DirecciÃ³n: " + direccionCliente;
+		factura += "NÃºmero pedido: " + Integer.toString(idPedido);
 		factura += "Productos";
 		
 		Iterator<Producto> iter_items = itemsPedido.iterator();
