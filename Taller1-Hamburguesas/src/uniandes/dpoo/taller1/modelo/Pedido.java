@@ -95,7 +95,7 @@ public class Pedido
 		String factura = "Cliente: " + nombreCliente;
 		factura += "DirecciÃ³n: " + direccionCliente;
 		factura += "NÃºmero pedido: " + Integer.toString(idPedido);
-		factura += "Productos";
+		factura += "Productos: ";
 		
 		Iterator<Producto> iter_items = itemsPedido.iterator();
 		
