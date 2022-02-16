@@ -1,4 +1,5 @@
 package uniandes.dpoo.taller1.consola;
+package uniandes.dpoo.taller1.modelo;
 
 import java.util.Iterator;
 import java.util.LinkedList;
