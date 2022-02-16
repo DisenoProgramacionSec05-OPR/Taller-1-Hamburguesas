@@ -2,7 +2,6 @@ package uniandes.dpoo.taller1.consola;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,10 +10,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import modelo.Ingrediente;
-import modelo.Pedido;
-import modelo.Producto;
-import modelo.Restaurante;
+import uniandes.dpoo.taller1.modelo.Pedido;
+import uniandes.dpoo.taller1.modelo.Producto;
+import uniandes.dpoo.taller1.modelo.Restaurante;
 
 public class Aplicacion
 {
@@ -28,7 +26,7 @@ public class Aplicacion
 		boolean inicio = true;
 		cargarInformacion();
 		
-		while (inico)
+		while (inicio)
 		{
 			try
 			{
@@ -49,16 +47,16 @@ public class Aplicacion
 				else if (opcion_seleccionada == 6)
 				{
 					System.out.println("Saliendo de la aplicacion ...");
-					inico = false;
+					inicio = false;
 				}
 				else
 				{
-					System.out.println("Por favor seleccione una opción válida.");
+					System.out.println("Por favor seleccione una opciÃ³n vÃ¡lida.");
 				}
 		}
 		catch (NumberFormatException e)
 		{
-			System.out.println("La opción seleccionada no es válida.");
+			System.out.println("La opciÃ³n seleccionada no es vÃ¡lida.");
 		}
 			
 		}
@@ -96,7 +94,7 @@ public class Aplicacion
 	
 	public void mostrarMenu()
 	{
-		System.out.println("Menú:");
+		System.out.println("MenÃº:");
 		ArrayList<Producto> Menus = restaurante.getMenus();
 		int numProductos = Menus.size();
 		
