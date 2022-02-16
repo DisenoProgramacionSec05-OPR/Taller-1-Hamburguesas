@@ -1,7 +1,11 @@
-package uniandes.dpoo.taller1.consola;
+package uniandes.dpoo.taller1.procesamiento;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+
+import uniandes.dpoo.taller1.modelo.Ingrediente;
+import uniandes.dpoo.taller1.modelo.Producto;
+import uniandes.dpoo.taller1.modelo.ProductoMenu;
 
 
 public class ProductoAjustado implements Producto
